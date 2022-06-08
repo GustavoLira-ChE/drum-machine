@@ -30,13 +30,16 @@ module.exports = {
                 ],
             },
             {
-                test: /\.scss$/,
+                test: /\.s?[ac]?ss$/i,
                 use: [{
                     // inject CSS to page
                     loader: 'style-loader'
                   }, {
                     // translates CSS into CommonJS modules
                     loader: 'css-loader'
+                  }, {
+                    // compiles Sass to CSS
+                    loader: 'sass-loader'
                   }, {
                     // Run postcss actions
                     loader: 'postcss-loader',
@@ -52,10 +55,8 @@ module.exports = {
                         }
                       }
                     }
-                  }, {
-                    // compiles Sass to CSS
-                    loader: 'sass-loader'
-                  }]
+                  }, 
+                ]
             },
         ],
     },
