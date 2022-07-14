@@ -1,32 +1,37 @@
 import React, {useState} from 'react';
 
-const ButtonPad = () => {
-    const [show, setShow] = useState("key"); 
-    const handlePress = () => {
-        playSound();
+const ClipButton = ( {info} ) => {
+    const handlePress = (e) => {
+        let buttonPress = e.target.id
+        buttonPress = String.fromCharCode(parseInt(buttonPress))
+        playSound(buttonPress);
     }
-    const playSound = () => {
-        const sound = document.getElementById("Q");
-        sound.currentTime = 0;
-        sound.play();
-    }
-    addEventListener("keydown",(e)=> {
-        console.log(e.key)
-        if (e.key === "q") {
-            playSound();
+    const playSound = (buttonPress) => {
+        let sound = document.getElementById(buttonPress);
+        try{
+            sound.currentTime = 0;
+            sound.play();
+        } catch(error){
         }
+    }
+    addEventListener("keydown",function keypress(event){
+        const keypress = event.key.toUpperCase();
+        playSound(keypress);
     });
     return (
-        <div>
-            <p>Display press key: {show}</p>
-            <button type="button" className="btn btn-primary" onClick={handlePress}>
+        <div className="col">
+            <button 
+                type="button" 
+                className="btn btn-primary" 
+                onClick={handlePress}
+                id={info.keyCode}>
                 Click me!
             </button>
-            <audio id="Q">
-                <source src="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3" type="audio/mp3" />
+            <audio id={info.keyTrigger}>
+                <source src={info.url} />
             </audio>
         </div>
     );
 };
 
-export default ButtonPad;
+export default ClipButton;
