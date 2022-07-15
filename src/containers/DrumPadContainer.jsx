@@ -5,7 +5,7 @@ import HandleAppContext from '../context/HandleAppContext';
 const DrumPadContainer = () => {
     const { bankUse } = useContext(HandleAppContext);
     return (
-        <div className="container col-6">
+        <div className="container col-8">
             <div className="row">
             {bankUse.map((item,index) => index < 3 ?
                     <ClipButton info={item} key={item.id} /> : null
