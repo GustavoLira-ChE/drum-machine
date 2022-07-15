@@ -1,14 +1,19 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import SwitchButton from "./components/SwitchButton";
+import ControllerContainer from "./containers/ControllerContainer";
+import DrumPadContainer from "./containers/DrumPadContainer";
+import { HandleAppProvider } from "./context/HandleAppContext";
 
 const App = () => {
     return (
-        <div className="text-primary text-center">
-        
-            <Button variant="primary">
-                Primary
-            </Button>
-        </div>
+        <HandleAppProvider>
+            <div className="container" id="drum-machine">
+                <div className="row">
+                    <DrumPadContainer />
+                    <ControllerContainer />
+                </div>
+            </div>
+        </HandleAppProvider>
     );
 };
 
