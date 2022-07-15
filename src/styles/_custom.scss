@@ -1,1 +1,13 @@
 @import "~bootstrap/scss/bootstrap";
+
+html, body, #app {
+    height: 100%;
+}
+
+#app{
+    display: grid;
+    place-content: center;
+}
+#drum-machine{
+    width: 600px;
+}
