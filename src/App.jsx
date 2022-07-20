@@ -1,5 +1,4 @@
 import React from "react";
-import SwitchButton from "./components/SwitchButton";
 import ControllerContainer from "./containers/ControllerContainer";
 import DrumPadContainer from "./containers/DrumPadContainer";
 import { HandleAppProvider } from "./context/HandleAppContext";
