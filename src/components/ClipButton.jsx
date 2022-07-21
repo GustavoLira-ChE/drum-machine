@@ -19,6 +19,9 @@ const ClipButton = ( {info} ) => {
         } catch(error){
         }
     }
+
+    // Esta parte genera el problema creo es porque esta adentro de este mismo componente
+    
     useEffect(() => {
         addEventListener("keydown",function keypress(event){
             const keypress = event.key.toUpperCase();
@@ -33,6 +36,7 @@ const ClipButton = ( {info} ) => {
             }
         });
     });
+
     return (
         <div>
             {power ?

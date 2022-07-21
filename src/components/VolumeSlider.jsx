@@ -2,11 +2,12 @@ import React, {useEffect, useContext} from 'react';
 import HandleAppContext from '../context/HandleAppContext';
 
 const VolumeSlider = () => {
-    const { handleVolume, power } = useContext(HandleAppContext);
+    const { handleVolume, power, handledisplay } = useContext(HandleAppContext);
     addEventListener("input", (e) => {
         let value = e.target.value;
         if( !isNaN(parseInt(value)) ){
             handleVolume(parseInt(value));
+            handledisplay(String(value));
         }
     });
     return (
