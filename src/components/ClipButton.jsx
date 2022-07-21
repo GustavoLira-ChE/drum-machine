@@ -1,8 +1,9 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import HandleAppContext from '../context/HandleAppContext';
 
 const ClipButton = ( {info} ) => {
-    const { volume, power } = useContext(HandleAppContext);
+    const { volume, power, handledisplay } = useContext(HandleAppContext);
+
     const handlePress = (e) => {
         let buttonPress = e.target.id
         buttonPress = String.fromCharCode(parseInt(buttonPress))
@@ -13,14 +14,24 @@ const ClipButton = ( {info} ) => {
         try{
             sound.volume = volume;
             sound.play();
+            console.log(keyid)
+            handledisplay(info.id);
         } catch(error){
         }
     }
-    addEventListener("keydown",function keypress(event){
-        const keypress = event.key.toUpperCase();
-        if(power){
-            playSound(keypress);
-        }
+    useEffect(() => {
+        addEventListener("keydown",function keypress(event){
+            const keypress = event.key.toUpperCase();
+            if(power){
+                playSound(keypress);
+            }
+        });
+        return () => document.removeEventListener("keypress", (e) => {
+            const keypress = e.key.toUpperCase();
+            if(power){
+                playSound(keypress);
+            }
+        });
     });
     return (
         <div>
@@ -30,7 +41,9 @@ const ClipButton = ( {info} ) => {
                 className="btn btn-primary btn-sm" 
                 style={{padding: "0.5rem", width: "60px"}}
                 onClick={handlePress}
-                id={info.keyCode}>
+                id={info.keyCode}
+                value={info.id}
+                >
                 {info.keyTrigger}
             </button> : 
             <button 
