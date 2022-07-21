@@ -4,7 +4,7 @@ import {bankOne, bankTwo} from "../constants.js";
 const useHandleApp = () => {
     const [power, setPower] = useState(false);
     const [bankUse, setBankUse] = useState(bankOne);
-    const [volume, setVolume] = useState(50);
+    const [volume, setVolume] = useState(0.5);
 
     const turnOnOff = (check) => {
         setPower(check);

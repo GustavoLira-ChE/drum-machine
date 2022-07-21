@@ -23,7 +23,7 @@ const ClipButton = ( {info} ) => {
         }
     });
     return (
-        <div className="container">
+        <div>
             {power ?
             <button 
                 type="button" 

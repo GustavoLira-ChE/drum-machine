@@ -8,9 +8,11 @@ const App = () => {
         <HandleAppProvider>
             <div className=".container-fluid pt-6" id="drum-machine">
                 <div className="row">
-                    <div className="col-2"></div>
+                    <div className="col-1"></div>
                     <DrumPadContainer />
+                    <div className="col-1"></div>
                     <ControllerContainer />
+                    <div className="col-1"></div>
                 </div>
             </div>
         </HandleAppProvider>
