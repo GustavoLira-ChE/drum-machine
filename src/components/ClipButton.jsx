@@ -18,27 +18,29 @@ const ClipButton = ( {info} ) => {
     }
     addEventListener("keydown",function keypress(event){
         const keypress = event.key.toUpperCase();
-        playSound(keypress);
+        if(power){
+            playSound(keypress);
+        }
     });
     return (
-        <div className="col">
+        <div className="container">
             {power ?
             <button 
                 type="button" 
                 className="btn btn-primary btn-sm" 
-                style={{padding: "0.5rem", width: "100px"}}
+                style={{padding: "0.5rem", width: "60px"}}
                 onClick={handlePress}
                 id={info.keyCode}>
-                {info.id}
+                {info.keyTrigger}
             </button> : 
             <button 
                 type="button" 
                 className="btn btn-primary btn-sm" 
-                style={{padding: "0.5rem", width: "100px"}}
+                style={{padding: "0.5rem", width: "60px"}}
                 onClick={handlePress}
                 id={info.keyCode}
                 disabled>
-                {info.id}
+                {info.keyTrigger}
             </button>
             }
             <audio id={info.keyTrigger}>
